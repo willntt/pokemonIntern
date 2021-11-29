@@ -1,0 +1,1 @@
+from .requestPokedex import request_pokemon
