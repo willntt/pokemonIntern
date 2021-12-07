@@ -8,7 +8,7 @@ bp = Blueprint("site",__name__)
 @bp.get('/')
 def index():
     # faz mais sentido utilizar esse debbug
-    object_pokemon = request_pokemon(request.args.get('nome'))
+    object_pokemon = request_pokemon(request.args.get('nome', default='mudkip'))
     type_pokemon = object_pokemon['type']
     color_theme = TypePokemon[type_pokemon].value
     object_pokemon['color_theme'] = color_theme
