@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, current_app
+from flask import Blueprint, request, render_template, current_app
 from pokedexN2t.ext.api.service import request_pokemon
 from pokedexN2t.ext.site.utils import TypePokemon
 
@@ -8,7 +8,7 @@ bp = Blueprint("site",__name__)
 @bp.get('/')
 def index():
     # faz mais sentido utilizar esse debbug
-    object_pokemon = request_pokemon('chansey')
+    object_pokemon = request_pokemon(request.args.get('nome'))
     type_pokemon = object_pokemon['type']
     color_theme = TypePokemon[type_pokemon].value
     object_pokemon['color_theme'] = color_theme
